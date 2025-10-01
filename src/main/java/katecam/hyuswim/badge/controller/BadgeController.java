@@ -26,7 +26,7 @@ public class BadgeController {
     // 컬렉션(획득/진행중/잠김/전체)
     @GetMapping("/collection")
     public ResponseEntity<BadgeCollectionVM> getCollection(@LoginUser User loginUser) {
-        // 보정: 임계치 달성했는데 과거에 미지급된 배지 지급
+        // 완료된 배지 지급
         badgeService.checkAndGrantAll(loginUser.getId());
 
         var vm = badgeService.getMyBadgeCollection(loginUser.getId());
